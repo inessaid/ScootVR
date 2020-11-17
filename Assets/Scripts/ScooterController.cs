@@ -3,24 +3,21 @@
 public class ScooterController : MonoBehaviour
 {
     public GameObject lHand, rHand, modelPivot, directionalPivot, straightRef;
-    public float initalVelocity = 0f, finalVelocity = 25f, currentVelocity = 0f, accelerationRate = 5f, decelerationRate = 10f;
-    public float rotationVelocity = 1f;
+    public float currentVelocity, initalVelocity, finalVelocity, accelerationRate, decelerationRate, frictionRate;
+    public float rotationVelocity;
     private Vector3 lPos, rPos;
-    private float initYRot;
-
+   
     private void Start()
     {
         modelPivot.transform.rotation = rHand.transform.rotation;
-        initYRot = directionalPivot.transform.rotation.y;
     }
 
     // Update is called once per frame
     void Update()
     {
         UpdatePivot();
-        
-        UpdateScooterRotation();
         UpdateScooterPosition();
+        UpdateScooterRotation();
     }
 
     void UpdatePivot()
@@ -36,33 +33,44 @@ public class ScooterController : MonoBehaviour
         float rTriggerValue = OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger);
         float lTriggerValue = OVRInput.Get(OVRInput.RawAxis1D.LIndexTrigger);
 
-        //Debug.Log("L: " + lTriggerValue + " R: " + rTriggerValue);
-
         // Accelerate by how hard the right index trigger is pressed
-        if (rTriggerValue > 0f) currentVelocity += accelerationRate * Time.deltaTime * rTriggerValue;
+        currentVelocity += accelerationRate * Time.deltaTime * rTriggerValue;
         // Decelerate by how hard the left index trigger is pressed
-        if (lTriggerValue > 0f) currentVelocity -= decelerationRate * Time.deltaTime * lTriggerValue;
-
-        currentVelocity *= 0.91f; // Friction
+        currentVelocity -= decelerationRate * Time.deltaTime * lTriggerValue;
+        // Adjust for friction
+        currentVelocity -= currentVelocity * .09f * Time.deltaTime;
+        // Set to be between min and max velocity
         currentVelocity = Mathf.Clamp(currentVelocity, initalVelocity, finalVelocity);
-        //transform.Translate(0, 0, currentVelocity * Time.deltaTime);
-        // Direction, magnitude, rate
-        transform.Translate(transform.forward * currentVelocity * Time.deltaTime);
+        Debug.Log("Velocity: " + currentVelocity);
+
+        transform.Translate(Vector3.forward * currentVelocity);
     }
 
     void UpdateScooterRotation()
     {
-        Vector3 straightRefDirection = straightRef.transform.forward;
-        Vector3 handlebarsDirection = directionalPivot.transform.forward;
-        Vector3 scooterDirection = (straightRefDirection + (handlebarsDirection * rotationVelocity * Time.deltaTime)).normalized;
-        transform.rotation = Quaternion.LookRotation(new Vector3(0, scooterDirection.y, 0));
-        //transform.rotation = Quaternion.LookRotation(scooterDirection);
+        if (currentVelocity > 0.1f)
+        {
+            Vector2 s = new Vector2(straightRef.transform.forward.x, straightRef.transform.forward.z);
+            Vector2 d = new Vector2(directionalPivot.transform.forward.x, directionalPivot.transform.forward.z);
+            s.Normalize();
+            d.Normalize();
 
-        //Vector3.RotateTowards(transform.forward, scooterDirection, 180, 0.0f);
-        //transform.rotation = Quaternion.Euler(new Vector3(0, (pivotRot.y - initYRot), 0));
-        //transform.Rotate(new Vector3(0, (pivotRot.y - initYRot) * currentVelocity * Time.deltaTime, 0));
+            float angle = Vector2.SignedAngle(s, d);
+            transform.Rotate(new Vector3(0, 1, 0), -angle * rotationVelocity * Time.deltaTime);
 
-        Debug.Log("Position vector: " + transform.position + "\nRotation vector: " + transform.rotation);
-        
+            // 3D flying scooter (E.T. Mode)
+            /*        
+            Vector3 straightRefDirection = straightRef.transform.forward;
+            Vector3 handlebarsDirection = directionalPivot.transform.forward;
+            Vector3 scooterDirection = (straightRefDirection + (handlebarsDirection * rotationVelocity * Time.deltaTime)).normalized;
+            transform.rotation = Quaternion.LookRotation(new Vector3(0, scooterDirection.y, 0));
+            transform.rotation = Quaternion.LookRotation(scooterDirection);
+
+            //Vector3.RotateTowards(transform.forward, scooterDirection, 180, 0.0f);
+            //transform.rotation = Quaternion.Euler(new Vector3(0, (pivotRot.y - initYRot), 0));
+            //transform.Rotate(new Vector3(0, (pivotRot.y - initYRot) * currentVelocity * Time.deltaTime, 0));
+            */
+        }
     }
+
 }
