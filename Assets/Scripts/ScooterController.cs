@@ -2,7 +2,7 @@
 
 public class ScooterController : MonoBehaviour
 {
-    public GameObject lHand, rHand, modelPivot, directionalPivot, straightRef;
+    public GameObject lHand, rHand, modelPivot, directionalPivot, straightRef, body;
     public float currentVelocity, initalVelocity, finalVelocity, accelerationRate, decelerationRate, frictionRate;
     public float rotationVelocity;
     private Vector3 lPos, rPos;
@@ -57,6 +57,7 @@ public class ScooterController : MonoBehaviour
 
             float angle = Vector2.SignedAngle(s, d);
             transform.Rotate(new Vector3(0, 1, 0), -angle * rotationVelocity * Time.deltaTime);
+            
 
             // 3D flying scooter (E.T. Mode)
             /*        
