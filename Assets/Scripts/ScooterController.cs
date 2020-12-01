@@ -41,7 +41,7 @@ public class ScooterController : MonoBehaviour
         currentVelocity -= currentVelocity * .09f * Time.deltaTime;
         // Set to be between min and max velocity
         currentVelocity = Mathf.Clamp(currentVelocity, initalVelocity, finalVelocity);
-        Debug.Log("Velocity: " + currentVelocity);
+        //Debug.Log("Velocity: " + currentVelocity);
 
         transform.Translate(Vector3.forward * currentVelocity);
     }
@@ -57,7 +57,6 @@ public class ScooterController : MonoBehaviour
 
             float angle = Vector2.SignedAngle(s, d);
             transform.Rotate(new Vector3(0, 1, 0), -angle * rotationVelocity * Time.deltaTime);
-            
 
             // 3D flying scooter (E.T. Mode)
             /*        
