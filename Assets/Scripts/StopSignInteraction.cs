@@ -80,4 +80,12 @@ public class StopSignInteraction : MonoBehaviour
             leftText.enabled = true;
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            StartCoroutine(StartInteraction());
+        }
+    }
 }
