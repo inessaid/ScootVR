@@ -41,9 +41,9 @@ public class ScooterController : MonoBehaviour
         currentVelocity -= currentVelocity * .09f * Time.deltaTime;
         // Set to be between min and max velocity
         currentVelocity = Mathf.Clamp(currentVelocity, initalVelocity, finalVelocity);
-        //Debug.Log("Velocity: " + currentVelocity);
+        Debug.Log("Velocity: " + currentVelocity);
 
-        transform.Translate(Vector3.forward * currentVelocity);
+        transform.Translate(Vector3.forward * currentVelocity * Time.deltaTime);
     }
 
     void UpdateScooterRotation()
