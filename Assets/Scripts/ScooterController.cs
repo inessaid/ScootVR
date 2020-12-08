@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using TMPro;
 
 public class ScooterController : MonoBehaviour
 {
-    public GameObject lHand, rHand, modelPivot, directionalPivot, straightRef, body;
+    public GameObject lHand, rHand, modelPivot, directionalPivot, straightRef;
     public float currentVelocity, initalVelocity, finalVelocity, accelerationRate, decelerationRate, frictionRate;
     public float rotationVelocity;
+    public TMP_Text speedText;
     private Vector3 lPos, rPos;
    
     private void Start()
@@ -18,6 +20,7 @@ public class ScooterController : MonoBehaviour
         UpdatePivot();
         UpdateScooterPosition();
         UpdateScooterRotation();
+        UpdateSpeedometer();
     }
 
     void UpdatePivot()
@@ -43,7 +46,7 @@ public class ScooterController : MonoBehaviour
         currentVelocity = Mathf.Clamp(currentVelocity, initalVelocity, finalVelocity);
         Debug.Log("Velocity: " + currentVelocity);
 
-        transform.Translate(Vector3.forward * currentVelocity * Time.deltaTime);
+        transform.Translate(Vector3.forward * currentVelocity);
     }
 
     void UpdateScooterRotation()
@@ -73,4 +76,8 @@ public class ScooterController : MonoBehaviour
         }
     }
 
+    void UpdateSpeedometer()
+    {
+        speedText.text = "Current Speed:\n" + (int)(currentVelocity * 40) + " MPH";
+    }
 }
