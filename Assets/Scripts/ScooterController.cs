@@ -48,8 +48,8 @@ public class ScooterController : MonoBehaviour
         currentVelocity = Mathf.Clamp(currentVelocity, initalVelocity, finalVelocity);
         Debug.Log("Velocity: " + currentVelocity);
 
-        rb.AddForce(Vector3.forward * currentVelocity);
-        //transform.Translate(Vector3.forward * currentVelocity);
+        //rb.AddForce(Vector3.forward * currentVelocity);
+        transform.Translate(Vector3.forward * currentVelocity);
     }
 
     void UpdateScooterRotation()
