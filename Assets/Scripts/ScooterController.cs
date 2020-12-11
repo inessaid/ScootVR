@@ -8,10 +8,12 @@ public class ScooterController : MonoBehaviour
     public float rotationVelocity;
     public TMP_Text speedText;
     private Vector3 lPos, rPos;
+    private Rigidbody rb;
    
     private void Start()
     {
         modelPivot.transform.rotation = rHand.transform.rotation;
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -46,7 +48,8 @@ public class ScooterController : MonoBehaviour
         currentVelocity = Mathf.Clamp(currentVelocity, initalVelocity, finalVelocity);
         Debug.Log("Velocity: " + currentVelocity);
 
-        transform.Translate(Vector3.forward * currentVelocity);
+        rb.AddForce(Vector3.forward * currentVelocity);
+        //transform.Translate(Vector3.forward * currentVelocity);
     }
 
     void UpdateScooterRotation()
@@ -59,6 +62,7 @@ public class ScooterController : MonoBehaviour
             d.Normalize();
 
             float angle = Vector2.SignedAngle(s, d);
+            //rb.AddTorque(new Vector3(0, 1, 0), -angle * rotationVelocity * Time.deltaTime);
             transform.Rotate(new Vector3(0, 1, 0), -angle * rotationVelocity * Time.deltaTime);
 
             // 3D flying scooter (E.T. Mode)
