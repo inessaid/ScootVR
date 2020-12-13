@@ -5,14 +5,15 @@ using TMPro;
 
 public class StopSignInteraction : MonoBehaviour
 {
-    public float timer = 10f;
-
     TMP_Text stopText;
     TMP_Text leftText;
     TMP_Text rightText;
     TMP_Text goText;
 
-    bool leftFirst, rightSecond;
+    public GameObject car;
+    public float carSpeed, carDistance;
+    bool leftFirst, rightSecond, moving;
+    Vector3 initCarPos;
 
     void Start()
     {
@@ -20,14 +21,21 @@ public class StopSignInteraction : MonoBehaviour
         leftText = transform.Find("Cues").Find("Cue Text").Find("LOOK LEFT!").GetComponent<TMP_Text>();
         rightText = transform.Find("Cues").Find("Cue Text").Find("LOOK RIGHT!").GetComponent<TMP_Text>();
         goText = transform.Find("Cues").Find("Cue Text").Find("GO!").GetComponent<TMP_Text>();
+        if (car != null)
+        {
+            initCarPos = car.transform.localPosition;
+        }
         ClearText();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S)) StartCoroutine(StartInteraction());
-        else if (Input.GetKeyDown(KeyCode.A)) LookLeft(); 
-        else if (Input.GetKeyDown(KeyCode.D)) LookRight();
+        if (moving && car != null)
+        {
+            if ((car.transform.position.x - initCarPos.x) < carDistance)
+                car.transform.position += car.transform.forward * carSpeed;
+            else Destroy(car);
+        }
     }
 
     IEnumerator StartInteraction()
@@ -35,6 +43,7 @@ public class StopSignInteraction : MonoBehaviour
         Debug.Log("STOP!");
         stopText.enabled = true;
         yield return new WaitForSeconds(2);
+        moving = true;
         ClearText();
         Debug.Log("LOOK LEFT!");
         leftText.enabled = true;

@@ -82,6 +82,6 @@ public class ScooterController : MonoBehaviour
 
     void UpdateSpeedometer()
     {
-        speedText.text = "Current Speed:\n" + (int)(currentVelocity * 40) + " MPH";
+        if (speedText != null) speedText.text = "Current Speed:\n" + (int)(currentVelocity * 40) + " MPH";
     }
 }
