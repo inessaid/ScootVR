@@ -10,7 +10,7 @@ public class TrafficLightWaitingArea : MonoBehaviour
     public TMP_Text go;
     public TMP_Text countdown;
     bool triggered = false;
-    int count = 20;
+    public int count = 10;
 
     private void Start()
     {
@@ -24,7 +24,7 @@ public class TrafficLightWaitingArea : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             tlm.EnteringWaitingArea();
-            Debug.Log("Hit " + other.gameObject.name);
+            //Debug.Log("Hit " + other.gameObject.name);
             if (!triggered)
             {
                 StartCoroutine(StopAndGoText());

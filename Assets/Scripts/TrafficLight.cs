@@ -28,7 +28,7 @@ public class TrafficLight : MonoBehaviour
 
     public void UpdateLights(int color)
     {
-        Debug.Log("Updating lights to color: " + color);
+        //Debug.Log("Updating lights to color: " + color);
         // 0 is Yellow
         // 1 is Green
         // 2 is Red

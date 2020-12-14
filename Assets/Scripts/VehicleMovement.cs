@@ -10,7 +10,6 @@ public class VehicleMovement : MonoBehaviour
     public float zOffset = -10f;
 
     private Vector3 velocity = Vector3.zero;
-    private float distanceToObject = 0f;
 
     // Update is called once per frame
     void Update()
@@ -21,9 +20,9 @@ public class VehicleMovement : MonoBehaviour
         {
             if (hit.collider != null && (hit.collider.CompareTag("Vehicle") || hit.collider.CompareTag("Obstacle")))
             {
-                Debug.Log("About to hit something at " + hit.point + "!");
+                //Debug.Log("About to hit something at " + hit.point + "!");
                 float localDist = hit.distance;
-                Debug.Log("Distance to object: " + localDist);
+                //Debug.Log("Distance to object: " + localDist);
                 // Slow down if object is getting nearer
                 if (localDist <= cautionDistance)
                 {
@@ -34,7 +33,6 @@ public class VehicleMovement : MonoBehaviour
                 {
                     transform.Translate(0, 0, speed);
                 }
-                distanceToObject = localDist;
             }
         }
         else transform.Translate(0, 0, speed);
