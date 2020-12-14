@@ -7,13 +7,14 @@ public class ScooterController : MonoBehaviour
     public float currentVelocity, initalVelocity, finalVelocity, accelerationRate, decelerationRate, frictionRate;
     public float rotationVelocity;
     public GameObject speedometerDial;
-    private Vector3 lPos, rPos, dialRotation;
+    private Vector3 lPos, rPos;
+    Quaternion dialRotation;
     private Rigidbody rb;
    
     private void Start()
     {
         modelPivot.transform.rotation = rHand.transform.rotation;
-        if (speedometerDial) dialRotation = speedometerDial.transform.eulerAngles;
+        if (speedometerDial) dialRotation = speedometerDial.transform.localRotation;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -47,7 +48,7 @@ public class ScooterController : MonoBehaviour
         currentVelocity -= currentVelocity * .09f * Time.deltaTime;
         // Set to be between min and max velocity
         currentVelocity = Mathf.Clamp(currentVelocity, initalVelocity, finalVelocity);
-        //Debug.Log("Velocity: " + currentVelocity);
+        Debug.Log("Velocity: " + currentVelocity);
 
         //rb.AddForce(Vector3.forward * currentVelocity);
         transform.Translate(Vector3.forward * currentVelocity);
@@ -84,7 +85,10 @@ public class ScooterController : MonoBehaviour
     void UpdateSpeedometer()
     {
         if (speedometerDial != null) {
-            speedometerDial.transform.eulerAngles = new Vector3(dialRotation.x, dialRotation.y, dialRotation.z - (140 * currentVelocity));
+            Vector3 dialRot = dialRotation.eulerAngles;
+            Vector3 newRotation = new Vector3(dialRot.x, dialRot.y, dialRot.z - (140 * currentVelocity));
+            Debug.Log("Dial rotation: " + newRotation);
+            speedometerDial.transform.localRotation = Quaternion.Euler(newRotation);
         }
     }
 }
