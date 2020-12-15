@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class VRSceneButton : MonoBehaviour
 {
-    public string sceneName;
+    public int sceneID;
     public Color newColor;
     Color initColor;
 
@@ -25,7 +25,11 @@ public class VRSceneButton : MonoBehaviour
         if (other.gameObject.CompareTag("Menu Selector"))
         {
             if (OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger) > 0.5f)
-                SceneManager.LoadScene(sceneName);
+                SceneManager.LoadScene(sceneID);
+
+            if (Input.GetKey(KeyCode.Space)){
+                SceneManager.LoadScene(sceneID);
+            }
         }
     }
 

@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 5c901a38b0cfaab4db7c9922602dce99
+  - enabled: 1
+    path: Assets/Scenes/Gainesville.unity
+    guid: 84a693b55b057cd4da61641e66189398
+  - enabled: 1
+    path: Assets/Scenes/Training Scene.unity
+    guid: 288847da624559945acd9d65c41bfd1a
   m_configObjects: {}

@@ -3,29 +3,9 @@ guid: 4752dd9ae2ca47e4b8d7d5675803928f
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wall_blue
-    second: {fileID: 2100000, guid: 8274427e6a371cd4b8c8e8a9a3bcf95a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wall_main
-    second: {fileID: 2100000, guid: 66be495dc83313a4f937c5f3225c329d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: blinn1
-    second: {fileID: 2100000, guid: 2dd49d71faf7e024192ef22512f8ea89, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert2
-    second: {fileID: 2100000, guid: 0d634858bdca1b34a820fceeed46ac05, type: 2}
+  externalObjects: {}
   materials:
-    materialImportMode: 2
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
