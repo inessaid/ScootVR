@@ -14,7 +14,6 @@ public class LookRaycast : MonoBehaviour
         {
             if (hit.collider != null)
             {
-                Debug.Log(hit.collider.gameObject.name);
                 Cue cue = hit.collider.gameObject.GetComponent<Cue>();
                 if (cue != null)
                 {

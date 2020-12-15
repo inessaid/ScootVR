@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Vehicle
   - Obstacle
+  - Menu
+  - Menu Button
+  - Menu Selector
   layers:
   - Default
   - TransparentFX
