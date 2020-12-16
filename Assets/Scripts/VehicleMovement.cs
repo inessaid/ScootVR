@@ -24,11 +24,11 @@ public class VehicleMovement : MonoBehaviour
 
                 if (hit.collider.CompareTag("Vehicle") || hit.collider.CompareTag("Obstacle"))
                 {
-                    Debug.Log("About to hit something at " + hit.point + "!");
+                    //Debug.Log("About to hit something at " + hit.point + "!");
                     localDist = hit.distance;
                     if (localDist > oldDist) closing = false;
                     oldDist = localDist;
-                    Debug.Log("Distance to object: " + localDist);
+                    //Debug.Log("Distance to object: " + localDist);
                     // Slow down if object is getting nearer
                     if (localDist <= cautionDistance)
                     {
