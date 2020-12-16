@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c88f0c4421d9dfa489991bc39e70903f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 1.5
   checkDistance: 50
   cautionDistance: 30
   zOffset: -10
