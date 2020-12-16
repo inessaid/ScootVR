@@ -9047,42 +9047,42 @@ PrefabInstance:
     - target: {fileID: 6452206663924321149, guid: 3498bb77402e4f6438c6352895015a01,
         type: 3}
       propertyPath: m_TreeBillboardDistance
-      value: 500
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6452206664357877813, guid: 3498bb77402e4f6438c6352895015a01,
         type: 3}
       propertyPath: m_TreeBillboardDistance
-      value: 500
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6452206664570613201, guid: 3498bb77402e4f6438c6352895015a01,
         type: 3}
       propertyPath: m_TreeBillboardDistance
-      value: 500
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6452206664941004495, guid: 3498bb77402e4f6438c6352895015a01,
         type: 3}
       propertyPath: m_TreeBillboardDistance
-      value: 500
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6452206665043080118, guid: 3498bb77402e4f6438c6352895015a01,
         type: 3}
       propertyPath: m_TreeBillboardDistance
-      value: 500
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6452206665139916171, guid: 3498bb77402e4f6438c6352895015a01,
         type: 3}
       propertyPath: m_TreeBillboardDistance
-      value: 500
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6452206665510799314, guid: 3498bb77402e4f6438c6352895015a01,
         type: 3}
       propertyPath: m_TreeBillboardDistance
-      value: 500
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6452206665594176470, guid: 3498bb77402e4f6438c6352895015a01,
         type: 3}
       propertyPath: m_TreeBillboardDistance
-      value: 500
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6452206665679700129, guid: 3498bb77402e4f6438c6352895015a01,
         type: 3}
