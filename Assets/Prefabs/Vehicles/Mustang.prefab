@@ -53,9 +53,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
-  checkDistance: 50
-  cautionDistance: 30
-  zOffset: -10
+  checkDistance: 100
+  cautionDistance: 50
 --- !u!65 &1377113009787254845
 BoxCollider:
   m_ObjectHideFlags: 0
